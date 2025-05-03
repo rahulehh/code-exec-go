@@ -6,6 +6,7 @@ import (
 )
 
 var (
+	// Logger is the shared application logger.
 	Logger *log.Logger
 )
 

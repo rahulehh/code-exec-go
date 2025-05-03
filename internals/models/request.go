@@ -7,5 +7,6 @@ type ExecuteRequest struct {
 
 type ExecuteResponse struct {
 	Stdout string `json:"stdout"`
+	Stderr string `json:"stderr"`
 	Error  string `json:"error,omitempty"`
 }
