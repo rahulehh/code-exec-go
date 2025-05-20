@@ -23,6 +23,10 @@ func Execute(execRequest models.ExecuteRequest) (models.ExecuteResponse, error) 
 		image = "python-runner"
 	case "go":
 		image = "go-runner"
+	case "c":
+		image = "c-runner"
+	case "cpp":
+		image = "cpp-runner"
 	default:
 		return models.ExecuteResponse{
 			Error: "Unsupported language: " + execRequest.Language,
