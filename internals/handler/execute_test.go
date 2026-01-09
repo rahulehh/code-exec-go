@@ -15,7 +15,7 @@ func TestHandleCodeExecution_Success(t *testing.T) {
 	var buf bytes.Buffer
 	json.NewEncoder(&buf).Encode(models.ExecuteRequest{
 		Language: "python",
-		Code:     "print('Hello World')",
+		Code:     "print(\"Hello World\")",
 	})
 
 	req := httptest.NewRequest(http.MethodPost, "/", &buf)
