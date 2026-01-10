@@ -5,7 +5,7 @@ cd images
 for dir in */; do
   cd "$dir"
   dir="${dir%/}"
-  docker build -t "$dir" . 
+  podman build --label app=codeexec -t "$dir" . 
   cd ..
 done
 

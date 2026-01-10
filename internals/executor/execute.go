@@ -34,7 +34,7 @@ func Execute(execRequest models.ExecuteRequest) (models.ExecuteResponse, error) 
 	}
 
 	cmd := exec.Command(
-		"docker",
+		"podman",
 		"run",
 		"--rm",
 		"-i",
@@ -54,14 +54,14 @@ func Execute(execRequest models.ExecuteRequest) (models.ExecuteResponse, error) 
 
 	if err != nil {
 		utils.Logger.Printf(
-			"Error running the program\nimage: %s\ncode:\n%s",
+			"Error running the program\nimage: %s\nerror message: %s\n",
 			image,
-			execRequest.Code,
+			err.Error(),
 		)
 		return models.ExecuteResponse{
 			Stdout: stdoutBuf.String(),
 			Stderr: stderrBuf.String(),
-			Error:  "Error occured in server",
+			Error:  "Error occured in the server",
 		}, nil
 	}
 

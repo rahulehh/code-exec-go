@@ -1,37 +1,24 @@
 # Online Code Execution Tool
 
-A HTTP-based code execution service written in Go, using language-specific Docker containers for secure and isolated runtime environments. Supports Python, C, C++, and Go execution.
+A HTTP-based code execution service written in Go, using language-specific Podman containers for secure and isolated runtime environments. Supports Python, C, C++, and Go execution.
 
 ## Requirements
 
 - `Go`
-- `Docker`
+- `Podman`
 
-## Setup
+## Commands
 
-Before running the service, make sure to run the following script to build all the required images:
-
-```bash
-./setup.sh
-```
-
-## Running and Building
-
-To build the service:
-
-```bash
-go build -o code-exec ./cmd/server/
-```
-
-To run the application (make sure Docker is running...)
-
-```bash
-go run ./cmd/server/main.go
-# or
-./code-exec # If the application is built
+```sh
+make build # setup and build the executable
+make run # runs the executable
+make clean # deletes the executable and logs
+make test # runs the test curl scripts
 ```
 
 ## API Usage
+
+Sample request at `/`
 
 ```json
 {
@@ -48,17 +35,4 @@ Expected response:
   "stderr": "",
   "error": ""
 }
-```
-
-Supported values for `language`:
-
-- `python`
-- `go`
-- `c`
-- `cpp`
-
-Additionally, all supported languages can be tested by running:
-
-```bash
-./scripts/curls.sh
 ```
